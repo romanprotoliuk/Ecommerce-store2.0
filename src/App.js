@@ -11,22 +11,23 @@ import Checkout from './routes/checkout/checkout.component';
 import { checkUserSession } from './store/user/user.action';
 
 const App = () => {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(checkUserSession());
-  }, []);
+	useEffect(() => {
+		dispatch(checkUserSession());
+	}, []);
 
-  return (
-    <Routes>
-      <Route path='/' element={<Navigation />}>
-        <Route index element={<Home />} />
-        <Route path='shop/*' element={<Shop />} />
-        <Route path='auth' element={<Authentication />} />
-        <Route path='checkout' element={<Checkout />} />
-      </Route>
-    </Routes>
-  );
+	console.log(process.env.REACT_APP_STRIPE_PUBLISHER_KEY);
+	return (
+		<Routes>
+			<Route path="/" element={<Navigation />}>
+				<Route index element={<Home />} />
+				<Route path="shop/*" element={<Shop />} />
+				<Route path="auth" element={<Authentication />} />
+				<Route path="checkout" element={<Checkout />} />
+			</Route>
+		</Routes>
+	);
 };
 
 export default App;
